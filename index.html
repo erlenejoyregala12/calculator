@@ -125,22 +125,22 @@ function handleOperator(value){
 }
 //calculation function
 function doCalculation(){
-    let total="";
-    switch(operator){
+    let total= parseFloat(calc.total);
+    switch(calc.preOp){
         case'*':
         total = total * parseFloat(calc.current);
         break;
 
          case'/':
-        total = total * parseFloat(calc.current);
+        total = total / parseFloat(calc.current);
         break;
 
          case'+':
-        total = total * parseFloat(calc.current);
+        total = total + parseFloat(calc.current);
         break;
 
          case'-':
-        total = total * parseFloat(calc.current);
+        total = total = parseFloat(calc.current);
         break;
 
         default:
