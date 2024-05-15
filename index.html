@@ -88,7 +88,7 @@ function Calculator(){
   if (!calc.isInitial){
     newValue = calc.current + value;
   }
-   setCalc({current: newValue, isinitial: false});
+   setCalc({current: newValue, total:calc.total,isInitial: false, preOp: calc.preOp});
 }
 
     //const [display, setDisplay] = React.useState ('0');
