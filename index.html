@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+    <style>
+        .app-container{
+            width: 350px;
+        }
+        .calculator{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid blue;
+        }
+        .display{
+            grid-column-start: 1;
+            grid-column-end: 5;
+            text-align: end;
+            height: 50px;
+            padding-left: 10px;
+            padding-top: 5px;
+        }
+        button{
+            height: 50px;
+            border: 1px solid black;
+        }
+        button.operator{
+            background-color: rgb(255, 149, 0);
+        }
+    </style>
+
+<body>
+
+<div id="app"></div>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+    // INTRO
+   //const  Hello = React.createElement('h1', {}, 'Hello React!');
+   //const hello = <p>Hello React!</p>
+   // ReactDOM.render(hello, document.getElementById('app'));
+
+    //FUNCTIONAL COMPONENTS
+    //function sample () {
+    //return <h1> HELLO JUAN! </h1>
+    //}
+
+    //const arrow = () =>  <h1>HELLO! arrow Function</h1>;
+        
+    //ReactDOM.render(sample(), document.getElementById('app'));
+
+    // Intro to Props in React / component
+    //const Hello = (props) => (
+        //<div>
+            //<h2>Hello, my name is {props.name}, I am {props.age} yrs. old.</h2>
+           // <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            //<a href="https://" target="_blank" rel="nooper
+           // noreferrer"> Sample Link </a>
+       // </div>
+    //);
+
+//ReactDOM.render(<Hello name="Juan" age={16}/>, document.getElementById('app'));
+
+//Callback Function
+
+// for the onclick event
+// function handleNumber(value){
+//    // alert(value);
+//   let newValue = calc.current + valuel;
+//    setCalc({current: newValue});
+// }
+
+
+
+// });
+
+
+//Parent Component
+function Calculator(){
+
+    function handleNumber(value){
+   // alert(value);
+  let newValue = value;
+  if (!calc.isInitial){
+    newValue = calc.current + value;
+  }
+   setCalc({current: newValue, isinitial: false});
+}
+
+    //const [display, setDisplay] = React.useState ('0');
+
+    //useState
+    const [calc, setCalc] = React.useState({
+    current: '0',
+    total : '',
+    isInitial: true,
+    preOp: ''
+});
+
+    return(
+        <div className="calculator">
+            <div className="display">{calc.current}</div>
+
+            <CalcButton value="7"onClick={handleNumber}/>
+            <CalcButton value="8"onClick={handleNumber}/>
+            <CalcButton value="9"onClick={handleNumber}/>
+            <CalcButton className="operator"value="*"/>
+
+            <CalcButton value="4"onClick={handleNumber}/>
+            <CalcButton value="5"onClick={handleNumber}/>
+            <CalcButton value="6"onClick={handleNumber}/>
+            <CalcButton className="operator"value="/"/>
+
+            <CalcButton value="1"onClick={handleNumber}/>
+            <CalcButton value="2"onClick={handleNumber}/>
+            <CalcButton value="3"onClick={handleNumber}/>
+            <CalcButton className="operator"value="+"/>
+
+            <CalcButton value="C"/>
+            <CalcButton value={0}/>
+            <CalcButton className="operator"value="="/>
+            <CalcButton className="operator"value="-"/>
+
+        </div>
+    );
+}
+
+//child component
+function CalcButton(props){
+    return(
+        <button className={props.className} onClick={()=>props.onClick(props.value)}>{props.value}</button>
+    );
+}
+ReactDOM.render(<div className="app-container"><Calculator/></div>, document.getElementById('app'));
+</script>
+</body>
+</html>
