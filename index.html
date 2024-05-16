@@ -6,6 +6,11 @@
     <title>Document</title>
     </head>
     <style>
+
+        .body{
+            margin-top: 25%;
+            margin-left: 30%;
+        }
         .app-container{
             width: 350px;
         }
@@ -88,7 +93,7 @@ function Calculator(){
   if (!calc.isInitial){
     newValue = calc.current + value;
   }
-   setCalc({current: newValue, total:calc.total,isInitial: false, preOp: calc.preOp});
+   setCalc({current: newValue,total: calc.total, isinitial: false, preOp: calc.preOp});
 }
 
     //const [display, setDisplay] = React.useState ('0');
@@ -103,46 +108,36 @@ function Calculator(){
 
 //handle clear button
 function handleClear(){
-    setCalc({
-    current: '0',
-    total : '0',
-    isInitial: true,
-    preOp: ''
-    });
+    setCalc({current: '0', total: '0', isInitial: true, preOp: ''});
 }
 
 //operator when button is clicked
 function handleOperator(value){
-    const total= doCalculation();
-    setCalc({
-        current: total.toString(), 
-        total: total.toString,
-        isInitial:true,
-        preOp:value
+    const total = doCalculation();
+    setCalc ({
+        current: total.toString(),
+        total: total.toString(),
+        isInitial: true,
+        preOp: value
     });
 }
 
-}
 //calculation function
 function doCalculation(){
-    let total= parseFloat(calc.total);
+    let total= parseFloat (calc.total);
     switch(calc.preOp){
         case'*':
-        total = total * parseFloat(calc.current);
+        total *=  parseFloat(calc.current);
         break;
-
-         case'/':
-        total = total / parseFloat(calc.current);
+        case'/':
+        total /=  parseFloat(calc.current);
         break;
-
-         case'+':
-        total = total + parseFloat(calc.current);
+        case'+':
+        total +=  parseFloat(calc.current);
         break;
-
-         case'-':
-        total = total = parseFloat(calc.current);
+        case'-':
+        total -=  parseFloat(calc.current);
         break;
-
         default:
             total = parseFloat(calc.current)
 
@@ -157,7 +152,7 @@ function doCalculation(){
             <CalcButton value="7"onClick={handleNumber}/>
             <CalcButton value="8"onClick={handleNumber}/>
             <CalcButton value="9"onClick={handleNumber}/>
-            <CalcButton className="operator"value="*" onClick={handleOperator}/>
+            <CalcButton className="operator"value="*"onClick={handleOperator}/>
 
             <CalcButton value="4"onClick={handleNumber}/>
             <CalcButton value="5"onClick={handleNumber}/>
